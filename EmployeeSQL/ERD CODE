@@ -1,4 +1,22 @@
 # Use the following starter code to begin creating a conceptual ERD --
+
+titles 
+-
+title_id varchar PK 
+title varchar
+
+
+employees as emp
+-
+emp_no int PK
+emp_title_id varchar(15) FK - titles.title_id
+birth_date varchar(10)
+first_name varchar
+last_name varchar
+sex varchar(1)
+hire_date varchar(10)
+
+
 departments as dep
 -
 dept_no varchar(4) PK
@@ -7,34 +25,17 @@ dept_name varchar UNIQUE
 
 dept_emp 
 -
-emp_no int PK FK >- emp.emp_no
-dept_no varchar(4) PK FK >- dep.dept_no
+emp_no int PK FK - emp.emp_no
+dept_no varchar(4) PK FK - dep.dept_no
 
 
 dept_manager  
 -
-emp_no int FK >- emp.emp_no
-dept_no varchar(4) PK FK >- dep.dept_no
-
-
-employees as emp
--
-emp_no int PK
-emp_title_id varchar(15)
-birth_date varchar(10)
-first_name varchar
-last_name varchar
-sex varchar(1)
-hire_date varchar(10)
+emp_no varchar FK - emp.emp_no
+dept_no varchar PK FK - dep.dept_no
 
 
 salaries 
 -
-emp_no int PK FK >- emp.emp_no
+emp_no int PK FK - emp.emp_no
 salary int
-
-
-titles 
--
-emp_title_id int PK FK >- emp.emp_title_id
-title varchar
